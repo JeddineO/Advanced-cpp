@@ -1,6 +1,6 @@
 #include "Pile.h"
 #include <iostream>
-using namespace std; 
+using namespace std;
 template <typename T>
 Pile<T>::Pile()
 {
@@ -34,4 +34,25 @@ void Pile<T>::Afficher()
         cout << "\t" << tmp->val;
         tmp = tmp->svt;
     }
+}
+
+template <typename T>
+Pile<T> Pile<T>::operator+(Pile<T> &other)
+{
+    Pile<T> *res = new Pile<T>();
+    Node<T> *tmp;
+    tmp = this->tete;
+    while (tmp)
+    {
+        res->Empiler(tmp->val);
+        tmp = tmp->svt;
+    }
+    tmp = other.tete;
+    while (tmp)
+    {
+        res->Empiler(tmp->val);
+        tmp = tmp->svt;
+    }
+
+    return *res;
 }
