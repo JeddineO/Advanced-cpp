@@ -8,6 +8,7 @@ public:
     Node<T> *Racine;
     Arbre();
     void Inserer(T);
-    void Afficher(Node<T> *root);
-   // ~Arbre();
+    void Afficher();
+    void displayHorizontal(Node<T> *node, int level);
+    // ~Arbre();
 };

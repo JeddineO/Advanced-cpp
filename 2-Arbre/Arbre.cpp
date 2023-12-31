@@ -52,13 +52,24 @@ void Arbre<T>::Inserer(T val)
     this->Racine = new Node<T>(val);
 }
 
-template <typename T>
-void Arbre<T>::Afficher(Node<T> *root)
+template <class T>
+void Arbre<T>::Afficher()
 {
-    if (root)
+    if (!this->Racine)
+        cout << "Empty tree" << endl;
+    else
+        this->displayHorizontal(this->Racine, 0);
+}
+
+template <class T>
+void Arbre<T>::displayHorizontal(Node<T> *node, int level)
+{
+    if (node)
     {
-        Afficher(root->left);
-        std::cout << root->val << " ";
-        Afficher(root->right);
+        this->displayHorizontal(node->right, level + 1);
+        for (int i = 0; i < level; i++)
+            cout << "\t";
+        cout << node->val << endl;
+        this->displayHorizontal(node->left, level + 1);
     }
 }
